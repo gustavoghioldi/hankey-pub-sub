@@ -4,7 +4,7 @@ Api
 metodo de autenticacion:
 ==========
 
-basic auth
+basic auth // con su propio class permission.
 
 formato de la publicacion
 =========================
