@@ -1,3 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
-# Create your models here.
+class PublisherModel(AbstractUser):
+    is_service = models.BooleanField(default=False)
