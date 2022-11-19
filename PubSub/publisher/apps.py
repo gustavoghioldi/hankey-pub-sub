@@ -6,5 +6,6 @@ class PublisherConfig(AppConfig):
     name = "publisher"
 
     def ready(self) -> None:
-        #from publisher.models.publisher_model import PublisherModel
+        from publisher.signals import publish_model_post_save
+        from publisher.pubmodels.message_model import MessageModel
         return super().ready()
