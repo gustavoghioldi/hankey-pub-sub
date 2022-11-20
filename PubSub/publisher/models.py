@@ -1,1 +1,2 @@
 from publisher.pubmodels.publish_model import PublisherModel
+from publisher.pubmodels.message_model import MessageModel

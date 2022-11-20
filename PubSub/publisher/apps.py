@@ -8,4 +8,5 @@ class PublisherConfig(AppConfig):
     def ready(self) -> None:
         from publisher.signals import publish_model_post_save
         from publisher.pubmodels.message_model import MessageModel
+        from publisher.pubmodels.publish_model import PublisherModel
         return super().ready()
