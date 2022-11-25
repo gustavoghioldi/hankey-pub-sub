@@ -5,7 +5,7 @@ class MessageSerializer(serializers.ModelSerializer):
     class Meta:
         model = MessageModel
         fields = ['id', 'serviceNamePub', 'data', 'datetimeMutation', 'url' ]
-        #read_only_fields = ['serviceNamePub', 'id', ]
+        read_only_fields = ['serviceNamePub', 'id', ]
 
     def create(self, validated_data):
         mm = MessageModel()

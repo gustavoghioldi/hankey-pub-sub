@@ -6,10 +6,10 @@ from publisher.pubmodels.message_model import MessageModel
 from publisher.serializers.publisher_serializer import PublisherSerializer
 from publisher.serializers.message_serializer import MessageSerializer
 from rest_framework.permissions import IsAuthenticated
-from rest_framework.authentication import BasicAuthentication
 
 logger = logging.getLogger(__name__)
 
+#TODO: separar del codigo de la vista
 class IsServerPublisher(IsAuthenticated):
     def has_permission(self, request, view):
         if not request.user.is_service:
