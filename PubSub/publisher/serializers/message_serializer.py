@@ -4,7 +4,7 @@ from publisher.models import MessageModel
 class MessageSerializer(serializers.ModelSerializer):
     class Meta:
         model = MessageModel
-        fields = ['id', 'serviceNamePub', 'data', 'datetimeMutation', 'url' ]
+        fields = ['serviceNamePub', 'data', 'datetimeMutation', 'url' ]
         read_only_fields = ['serviceNamePub', 'id', ]
 
     def create(self, validated_data):
