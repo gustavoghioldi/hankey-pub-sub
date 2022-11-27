@@ -9,5 +9,4 @@ class MessageModel(models.Model):
     def __str__(self):
         return self.serviceNamePub
     
-    def __unicode__(self):
-        return u'%s' % self.serviceNamePub
+    
