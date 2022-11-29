@@ -1,12 +1,13 @@
 from django.db import models
+from publisher.models import PublisherModel
 
 class MessageModel(models.Model):
-    serviceNamePub = models.CharField(max_length=64, unique=True) # esto lo vamos a setear desde la credencial que publique
+    servicePub = models.ForeignKey(PublisherModel, on_delete= models.CASCADE)
     data = models.JSONField()
     datetimeMutation = models.DateTimeField()
     url = models.URLField()
 
     def __str__(self):
-        return self.serviceNamePub
+        return str(self.id)
     
     

@@ -14,7 +14,7 @@ class IsServerPublisher(IsAuthenticated):
     def has_permission(self, request, view):
         if not request.user.is_service:
             return False
-        else: 
+        else:
             return bool(True)
 
 class PublisherListview(generics.ListCreateAPIView):
