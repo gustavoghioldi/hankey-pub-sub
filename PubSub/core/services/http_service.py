@@ -5,7 +5,7 @@ import requests
 
 class JsonService:
     @staticmethod
-    def send(instance:MessageModel, url:SubscriberModel):
+    def send(instance, url):
         json = model_to_dict(instance)
-        r = requests.post(url= SubscriberModel.webhook, data=json)
+        r = requests.post(url=url, data=json)
         return r

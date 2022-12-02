@@ -14,11 +14,10 @@ def message_dispacher(sender,instance: MessageModel,created:bool, **kwargs)->Non
         for i in subs:
             if i.webhook:
                 #TODO: pasarlo a un servicio
-                async_task('core.services.http_service.JsonService.send')
+                async_task('core.services.http_service.JsonService.send', instance, i.webhook)
             if i.email:
                 listofemails.append(i.email)
-                if len(listofemails) == 10:
-                    for mails in listofemails:
-                        async_task('core.services.email_service.EmailService.send', instance, [mails])
+                if len(listofemails) == 2:
+                    async_task('core.services.email_service.EmailService.send', instance, listofemails)
                     listofemails.clear()
                     
