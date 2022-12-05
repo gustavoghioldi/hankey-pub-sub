@@ -20,7 +20,7 @@ def message_dispacher(sender,instance: MessageModel,created:bool, **kwargs)->Non
                 if len(dictofemails) >= 2:
                     for members in dictofemails:
                         for clave, valor in members.items():
-                            async_task(EmailService.send(instance, EMAIL_HOST_USER, clave, valor))
+                            async_task('core.services.email_service.EmailService.send',instance, EMAIL_HOST_USER, clave, valor)
                     dictofemails.clear()
                     break
                 else:

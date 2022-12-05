@@ -4,6 +4,7 @@ from publisher.pubmodels.message_model import MessageModel
 
 
 class EmailService:
+    @staticmethod
     def send(instance:MessageModel, from_email, to_email, message, fail_silently=False):
         subject = instance.servicePub.username
         from_email = EMAIL_HOST_USER
