@@ -5,8 +5,7 @@ from publisher.pubmodels.message_model import MessageModel
 
 class EmailService:
     @staticmethod
-    def send(instance:MessageModel, from_email, to_email, message, fail_silently=False):
+    def send(instance:MessageModel, to_email, message, fail_silently=False):
         subject = instance.servicePub.username
-        from_email = EMAIL_HOST_USER
         to = [to_email]
-        send_mail(subject, message, from_email, to, fail_silently=fail_silently)
+        send_mail(subject, message, EMAIL_HOST_USER, to, fail_silently=fail_silently)
