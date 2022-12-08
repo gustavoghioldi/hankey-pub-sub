@@ -1,0 +1,26 @@
+sequenceDiagram
+    Actor Client
+    Client->>api PubSub: envia una publicación
+    api PubSub ->> api PubSub: verifica que sea un servidor autenticado
+    api PubSub ->> model message: envia la transaccion al modelo
+    model message ->> model message: valida los datos
+    model message ->> model message: persiste la transaccion en base de datos
+    model message ->> Client: responde OK /Error
+    model message -->> model message signal: el modelo ejectuta una señal (post save)
+    model message signal ->> message dispacher: envia la instancia
+    message dispacher ->> message dispacher: verifica que sea un nuevo objeto
+    alt created
+        alt SI EL SUBSCRIPTOR TIENE WEBHOOK
+            message dispacher ->> Http service: envia instancia
+            Http service ->> Http service: pasa instancia a json
+            Http service -->> JsonService: realiza Post del Json 
+        else SI EL SUBSCRIPTOR TIENE EMAIL
+            loop Loop appendea mails con su data
+                message dispacher ->> message dispacher: agrega los mails y su data en un acumulador
+                message dispacher -->> email service: envia los mails con su data
+            end
+            message dispacher ->> message dispacher: vuelve el acumulador a cero
+            
+        end
+
+   end

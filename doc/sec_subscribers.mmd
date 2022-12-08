@@ -1,0 +1,6 @@
+sequenceDiagram
+    Actor Client
+    Client->>api subscribers: envia una subscripcion
+    api subscribers ->> api subscribers: valida que los datos sean correctos
+    api subscribers ->> base de datos: OK: almacena al suscriptor en la base de datos
+    api subscribers ->> Client: Error: Rechaza subscripcion
